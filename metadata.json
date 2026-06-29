@@ -1,0 +1,6 @@
+{
+  "name": "SpeakEase",
+  "description": "An elegant, Qoves-inspired landing page for Indian freelancers targeting international clients, featuring a live interactive voice evaluation tool and 2-guide clear speech PDF bundle.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
