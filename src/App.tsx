@@ -12,7 +12,6 @@ import WhoItsFor from "./components/WhoItsFor";
 import Pricing from "./components/Pricing";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
-import PromoBanner from "./components/PromoBanner";
 import { Unlock, CheckCircle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -45,9 +44,6 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#F4F5F7] text-[#0D0D0D] selection:bg-[#8A9BAE]/30 antialiased font-sans">
       
-      {/* Promo Announcement Banner */}
-      <PromoBanner />
-
       {/* Floating Navbar */}
       <Navbar 
         onScrollToSection={handleScrollToSection}

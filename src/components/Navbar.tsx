@@ -26,7 +26,7 @@ export default function Navbar({ onScrollToSection, onOpenCheckout }: NavbarProp
   return (
     <>
       <header className={`fixed left-0 right-0 z-40 px-4 md:px-8 max-w-7xl mx-auto pointer-events-none transition-all duration-300 ${
-        isScrolled ? "top-3 sm:top-4" : "top-20 sm:top-14"
+        isScrolled ? "top-3" : "top-5"
       }`}>
         <motion.div
           initial={{ y: -50, opacity: 0 }}
@@ -107,7 +107,7 @@ export default function Navbar({ onScrollToSection, onOpenCheckout }: NavbarProp
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
             className={`fixed left-4 right-4 z-40 md:hidden bg-[#1A1A1A] border border-white/10 rounded-2xl shadow-2xl p-5 flex flex-col gap-4 backdrop-blur-lg transition-all duration-300 ${
-              isScrolled ? "top-16" : "top-32"
+              isScrolled ? "top-16" : "top-20"
             }`}
           >
             <div className="flex flex-col gap-2">
