@@ -7,7 +7,6 @@ import OldWayVsNewWay from "./components/OldWayVsNewWay";
 import VocalLeaks from "./components/VocalLeaks";
 import Feedbacks from "./components/Feedbacks";
 import ProductInside from "./components/ProductInside";
-import WorkbookPreview from "./components/WorkbookPreview";
 import WhoItsFor from "./components/WhoItsFor";
 import Pricing from "./components/Pricing";
 import FAQ from "./components/FAQ";
@@ -78,9 +77,6 @@ export default function App() {
           unlocked={unlocked} 
           onOpenCheckout={() => handleScrollToSection("pricing")}
         />
-
-        {/* New Feature: Interactive Workbook / Planner Page Previews */}
-        <WorkbookPreview />
 
         {/* Section 06: Who Its For */}
         <WhoItsFor />
