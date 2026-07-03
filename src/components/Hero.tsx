@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Mic, ArrowRight, Play, CheckCircle } from "lucide-react";
+import speakeaseGuideCover from "../assets/images/speakease_guide_cover_original.png";
 
 interface HeroProps {
   onOpenCheckout: () => void;
@@ -58,81 +59,103 @@ export default function Hero({ onOpenCheckout, onScrollToSection }: HeroProps) {
         </div>
       </div>
 
-      {/* Hero Content aligned elegantly near the bottom */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-start">
+      {/* Hero Content aligned elegantly in a responsive layout */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
         
-        {/* Small muted line with pill border */}
-        <motion.div 
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#C8CDD4]/20 bg-white/5 backdrop-blur-sm mb-6"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-          <span className="font-sans text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#8A9BAE]">
-            Join 2,000+ Indian freelancers
-          </span>
-        </motion.div>
-
-        {/* Large two-tone Serif Headline */}
-        <motion.h1 
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-serif text-5xl md:text-7xl font-semibold tracking-tight text-white mb-6 leading-tight flex flex-col"
-        >
-          <span>Speak clearly,</span>
-          <span className="text-[#8A9BAE] italic font-medium">win globally.</span>
-        </motion.h1>
-
-        {/* Body Text */}
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="font-sans text-base md:text-xl text-neutral-300 max-w-2xl mb-10 leading-relaxed font-normal"
-        >
-          The system that trains Indian freelancers to speak confidently, master standard syllable stress, and close international clients.
-        </motion.p>
-
-        {/* Action Button in Hero */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
-        >
-          <button
-            onClick={onOpenCheckout}
-            className="font-sans text-sm font-semibold px-8 py-4 bg-white text-[#0D0D0D] rounded-full hover:bg-neutral-200 active:scale-98 transition-all duration-200 shadow-xl flex items-center justify-center gap-2.5 cursor-pointer border-none"
+        {/* Left Column: Content */}
+        <div className="w-full lg:w-7/12 flex flex-col items-start">
+          
+          {/* Small muted line with pill border */}
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#C8CDD4]/20 bg-white/5 backdrop-blur-sm mb-6"
           >
-            Get SpeakEase — ₹399
-            <ArrowRight size={16} />
-          </button>
-        </motion.div>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span className="font-sans text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#8A9BAE]">
+              Join 2,000+ Indian freelancers
+            </span>
+          </motion.div>
 
-        {/* Core metrics bar aligned nicely */}
+          {/* Large two-tone Serif Headline */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="font-serif text-5xl md:text-7xl font-semibold tracking-tight text-white mb-6 leading-tight flex flex-col"
+          >
+            <span>Speak clearly,</span>
+            <span className="text-[#8A9BAE] italic font-medium">win globally.</span>
+          </motion.h1>
+
+          {/* Body Text */}
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="font-sans text-base md:text-xl text-neutral-300 max-w-2xl mb-10 leading-relaxed font-normal"
+          >
+            The system that trains Indian freelancers to speak confidently, master standard syllable stress, and close international clients.
+          </motion.p>
+
+          {/* Action Button in Hero */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
+          >
+            <button
+              onClick={onOpenCheckout}
+              className="font-sans text-sm font-semibold px-8 py-4 bg-white text-[#0D0D0D] rounded-full hover:bg-neutral-200 active:scale-98 transition-all duration-200 shadow-xl flex items-center justify-center gap-2.5 cursor-pointer border-none"
+            >
+              Get SpeakEase — ₹399
+              <ArrowRight size={16} />
+            </button>
+          </motion.div>
+
+          {/* Core metrics bar aligned nicely */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.8 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="mt-16 pt-8 border-t border-white/5 w-full grid grid-cols-2 sm:grid-cols-4 gap-6 text-left"
+          >
+            <div>
+              <span className="font-serif text-3xl font-semibold text-white">2+</span>
+              <p className="font-sans text-[10px] uppercase tracking-widest text-[#8A9BAE] mt-1">Guide PDF Bundle</p>
+            </div>
+            <div>
+              <span className="font-serif text-3xl font-semibold text-white">2,000+</span>
+              <p className="font-sans text-[10px] uppercase tracking-widest text-[#8A9BAE] mt-1">Indian Graduates</p>
+            </div>
+            <div>
+              <span className="font-serif text-3xl font-semibold text-white">₹399</span>
+              <p className="font-sans text-[10px] uppercase tracking-widest text-[#8A9BAE] mt-1">One-time Price</p>
+            </div>
+            <div>
+              <span className="font-serif text-3xl font-semibold text-white">100%</span>
+              <p className="font-sans text-[10px] uppercase tracking-widest text-[#8A9BAE] mt-1">Risk-Free Guarantee</p>
+            </div>
+          </motion.div>
+
+        </div>
+
+        {/* Right Column: Premium Guide Cover image (exactly as it is, no crops, no alterations) */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.8 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="mt-16 pt-8 border-t border-white/5 w-full grid grid-cols-2 sm:grid-cols-4 gap-6 text-left"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="w-full lg:w-5/12 flex justify-center lg:justify-end mt-8 lg:mt-0"
         >
-          <div>
-            <span className="font-serif text-3xl font-semibold text-white">2+</span>
-            <p className="font-sans text-[10px] uppercase tracking-widest text-[#8A9BAE] mt-1">Guide PDF Bundle</p>
-          </div>
-          <div>
-            <span className="font-serif text-3xl font-semibold text-white">2,000+</span>
-            <p className="font-sans text-[10px] uppercase tracking-widest text-[#8A9BAE] mt-1">Indian Graduates</p>
-          </div>
-          <div>
-            <span className="font-serif text-3xl font-semibold text-white">₹399</span>
-            <p className="font-sans text-[10px] uppercase tracking-widest text-[#8A9BAE] mt-1">One-time Price</p>
-          </div>
-          <div>
-            <span className="font-serif text-3xl font-semibold text-white">100%</span>
-            <p className="font-sans text-[10px] uppercase tracking-widest text-[#8A9BAE] mt-1">Risk-Free Guarantee</p>
+          <div className="relative max-w-[320px] sm:max-w-[360px] md:max-w-[380px] lg:max-w-[420px] w-full rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/10 transition-all duration-300 hover:scale-[1.01] hover:border-white/20 bg-[#1A1A1A]">
+            <img 
+              src={speakeaseGuideCover} 
+              alt="The Clear Speech Guide Cover" 
+              className="w-full h-auto object-contain block"
+              referrerPolicy="no-referrer"
+            />
           </div>
         </motion.div>
 

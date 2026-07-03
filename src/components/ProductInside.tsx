@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { GUIDES } from "../data";
 import { GuideBook } from "../types";
 import { BookOpen, Check, Lock, Unlock, PlayCircle, X } from "lucide-react";
+import speakeaseGuideCover from "../assets/images/speakease_guide_cover_original.png";
+import globalAccentGuideCover from "../assets/images/global_accent_guide_cover.png";
 
 interface ProductInsideProps {
   unlocked: boolean;
@@ -43,33 +45,51 @@ export default function ProductInside({ unlocked, onOpenCheckout }: ProductInsid
             className="bg-white rounded-2xl border border-[#C8CDD4]/15 p-6 md:p-8 shadow-sm flex flex-col md:flex-row gap-8 items-stretch hover:border-[#8A9BAE]/30 transition-all group"
           >
             {/* Guide Thumbnail Left Graphic - book cover illustration */}
-            <div className="w-full md:w-64 bg-[#1A1A1A] rounded-xl flex flex-col justify-between p-6 shrink-0 relative overflow-hidden text-white min-h-64 shadow-inner">
-              <div className="absolute top-0 right-0 p-8 opacity-5">
-                <BookOpen size={160} />
-              </div>
-              <div className="flex items-center justify-between z-10">
-                <span className="font-mono text-[9px] font-bold text-[#8A9BAE] uppercase tracking-widest bg-white/5 px-2.5 py-1 rounded-full border border-white/5">
-                  {guide.badge}
-                </span>
-                
-                {unlocked ? (
-                  <Unlock size={14} className="text-emerald-400" />
-                ) : (
-                  <Lock size={14} className="text-neutral-500" />
-                )}
-              </div>
-              
-              <div className="z-10 mt-8">
-                <p className="font-mono text-[10px] text-[#8A9BAE] uppercase tracking-wider">SPEAKEASE METHOD</p>
-                <h4 className="font-serif text-2xl font-bold leading-tight mt-1">{guide.title}</h4>
-              </div>
+            <div className="w-full md:w-64 bg-[#1A1A1A] rounded-xl flex flex-col justify-between p-6 shrink-0 relative overflow-hidden text-white min-h-[300px] shadow-lg border border-white/5">
+              {guide.id === "guide-1" ? (
+                <img 
+                  src={speakeaseGuideCover} 
+                  alt={guide.title} 
+                  className="w-full h-full object-contain block absolute inset-0"
+                  referrerPolicy="no-referrer"
+                />
+              ) : guide.id === "guide-2" ? (
+                <img 
+                  src={globalAccentGuideCover} 
+                  alt={guide.title} 
+                  className="w-full h-full object-contain block absolute inset-0"
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                <>
+                  <div className="absolute top-0 right-0 p-8 opacity-5">
+                    <BookOpen size={160} />
+                  </div>
+                  <div className="flex items-center justify-between z-10">
+                    <span className="font-mono text-[9px] font-bold text-[#8A9BAE] uppercase tracking-widest bg-white/5 px-2.5 py-1 rounded-full border border-white/5">
+                      {guide.badge}
+                    </span>
+                    
+                    {unlocked ? (
+                      <Unlock size={14} className="text-emerald-400" />
+                    ) : (
+                      <Lock size={14} className="text-neutral-500" />
+                    )}
+                  </div>
+                  
+                  <div className="z-10 mt-8">
+                    <p className="font-mono text-[10px] text-[#8A9BAE] uppercase tracking-wider">SPEAKEASE METHOD</p>
+                    <h4 className="font-serif text-2xl font-bold leading-tight mt-1">{guide.title}</h4>
+                  </div>
 
-              <div className="pt-8 border-t border-white/5 mt-auto flex items-center justify-between z-10">
-                <span className="font-sans text-[10px] text-[#8A9BAE] uppercase tracking-widest font-semibold">
-                  {unlocked ? "Click to Read" : "Click to Preview"}
-                </span>
-                <span className="font-mono text-[9px] text-[#8A9BAE]">© QORR LABS</span>
-              </div>
+                  <div className="pt-8 border-t border-white/5 mt-auto flex items-center justify-between z-10">
+                    <span className="font-sans text-[10px] text-[#8A9BAE] uppercase tracking-widest font-semibold">
+                      {unlocked ? "Click to Read" : "Click to Preview"}
+                    </span>
+                    <span className="font-mono text-[9px] text-[#8A9BAE]">© QORR LABS</span>
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Guide Content Right */}
