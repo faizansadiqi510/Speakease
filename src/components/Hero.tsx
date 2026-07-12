@@ -149,13 +149,20 @@ export default function Hero({ onOpenCheckout, onScrollToSection }: HeroProps) {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="w-full lg:w-5/12 flex justify-center lg:justify-end mt-8 lg:mt-0"
         >
-          <div className="relative max-w-[320px] sm:max-w-[360px] md:max-w-[380px] lg:max-w-[420px] w-full rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/10 transition-all duration-300 hover:scale-[1.01] hover:border-white/20 bg-[#1A1A1A]">
+          <div className="relative max-w-[320px] sm:max-w-[360px] md:max-w-[380px] lg:max-w-[420px] w-full rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/10 transition-all duration-300 hover:scale-[1.01] hover:border-white/20 bg-[#1A1A1A] group">
             <img 
               src={speakeaseGuideCover} 
               alt="The Clear Speech Guide Cover" 
               className="w-full h-auto object-contain block"
               referrerPolicy="no-referrer"
             />
+            {/* Realistic 3D Book Spine & Crease Shadows */}
+            <div className="absolute inset-y-0 left-0 w-5 bg-gradient-to-r from-black/50 via-black/15 to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 left-5 w-[1px] bg-white/5 z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 left-6 w-[1px] bg-black/25 z-10 pointer-events-none" />
+            
+            {/* Luxury Reflection Diagonal Shine */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent z-10 pointer-events-none" />
           </div>
         </motion.div>
 

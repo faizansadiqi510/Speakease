@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Check, Shield, Download, Lock, CheckCircle2, ChevronRight, AlertCircle, Loader2 } from "lucide-react";
 
@@ -13,18 +13,51 @@ export default function Pricing({ onUnlockGuides, unlocked }: PricingProps) {
   const [fullName, setFullName] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [price, setPrice] = useState(399);
 
-  const handlePay = (e: React.FormEvent) => {
+  useEffect(() => {
+    fetch("/api/checkout/config")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && typeof data.price === "number") {
+          setPrice(data.price);
+        }
+      })
+      .catch((err) => console.error("Error fetching pricing config:", err));
+  }, [unlocked]);
+
+  const handlePay = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !fullName) return;
 
     setIsProcessing(true);
-    // Simulate payment gateway delay
-    setTimeout(() => {
-      setIsProcessing(false);
-      setIsSuccess(true);
-      onUnlockGuides(); // Unlocks full chapters in the app state
-    }, 2500);
+    try {
+      const response = await fetch("/api/checkout/record-purchase", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName,
+          email,
+          amount: price,
+          paymentMethod: "UPI/Card Web Gateway"
+        })
+      });
+      
+      if (response.ok) {
+        setIsProcessing(false);
+        setIsSuccess(true);
+        onUnlockGuides(); // Unlocks full chapters in the app state
+      } else {
+        throw new Error("Failed to record transaction");
+      }
+    } catch (err) {
+      console.warn("API offline or error. Falling back to mock transaction record.", err);
+      setTimeout(() => {
+        setIsProcessing(false);
+        setIsSuccess(true);
+        onUnlockGuides();
+      }, 2000);
+    }
   };
 
   const features = [
@@ -69,7 +102,7 @@ export default function Pricing({ onUnlockGuides, unlocked }: PricingProps) {
           <div className="mt-8 mb-6">
             <div className="flex items-center justify-center gap-3">
               <span className="font-sans text-lg text-neutral-400 line-through">₹799</span>
-              <span className="font-serif text-5xl md:text-6xl font-bold text-white">₹399</span>
+              <span className="font-serif text-5xl md:text-6xl font-bold text-white">₹{price}</span>
             </div>
             <p className="font-sans text-xs text-[#8A9BAE] mt-2 uppercase tracking-widest">
               ONE-TIME PAYMENT • LIFETIME DIGITAL DOWNLOAD
@@ -99,7 +132,7 @@ export default function Pricing({ onUnlockGuides, unlocked }: PricingProps) {
               onClick={() => setIsCheckingOut(true)}
               className="w-full font-sans text-sm font-semibold px-8 py-4 bg-white hover:bg-neutral-200 text-[#0D0D0D] rounded-full active:scale-98 transition-all duration-200 shadow-xl flex items-center justify-center gap-2 border-none cursor-pointer mb-4"
             >
-              Get SpeakEase — ₹399
+              Get SpeakEase — ₹{price}
             </button>
           )}
 
@@ -122,7 +155,7 @@ export default function Pricing({ onUnlockGuides, unlocked }: PricingProps) {
                   <>
                     <h3 className="font-serif text-2xl font-semibold text-[#0D0D0D] mb-2">Secure Checkout</h3>
                     <p className="font-sans text-xs text-[#8A9BAE] mb-6">
-                      Provide details to process your simulated UPI/Card payment of ₹399.
+                      Provide details to process your simulated UPI/Card payment of ₹{price}.
                     </p>
 
                     <form onSubmit={handlePay} className="space-y-4">
@@ -157,7 +190,7 @@ export default function Pricing({ onUnlockGuides, unlocked }: PricingProps) {
                       <div className="p-4 bg-neutral-50 rounded-xl border border-neutral-100 space-y-2">
                         <div className="flex justify-between items-center text-xs">
                           <span className="text-[#8A9BAE] font-medium">Subtotal</span>
-                          <span className="text-[#0D0D0D] font-semibold line-through">₹799</span>
+                          <span className="text-[#0D0D0D] font-semibold line-through">₹{price + 400}</span>
                         </div>
                         <div className="flex justify-between items-center text-xs border-b border-dashed border-[#C8CDD4]/25 pb-2">
                           <span className="text-emerald-600 font-semibold">Special Freelancer Discount</span>
@@ -165,7 +198,7 @@ export default function Pricing({ onUnlockGuides, unlocked }: PricingProps) {
                         </div>
                         <div className="flex justify-between items-center">
                           <span className="font-sans text-xs font-bold text-[#0D0D0D]">Total Amount</span>
-                          <span className="font-mono text-sm font-bold text-[#0D0D0D]">₹399</span>
+                          <span className="font-mono text-sm font-bold text-[#0D0D0D]">₹{price}</span>
                         </div>
                       </div>
 

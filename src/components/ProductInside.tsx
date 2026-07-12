@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { GUIDES } from "../data";
 import { GuideBook } from "../types";
-import { BookOpen, Check, Lock, Unlock, PlayCircle, X } from "lucide-react";
+import { BookOpen, Check, Lock, Unlock, PlayCircle, X, Download } from "lucide-react";
 import speakeaseGuideCover from "../assets/images/speakease_guide_cover_original.png";
 import globalAccentGuideCover from "../assets/images/global_accent_guide_cover.png";
 
@@ -45,19 +45,25 @@ export default function ProductInside({ unlocked, onOpenCheckout }: ProductInsid
             className="bg-white rounded-2xl border border-[#C8CDD4]/15 p-6 md:p-8 shadow-sm flex flex-col md:flex-row gap-8 items-stretch hover:border-[#8A9BAE]/30 transition-all group"
           >
             {/* Guide Thumbnail Left Graphic - book cover illustration */}
-            <div className="w-full md:w-64 bg-[#1A1A1A] rounded-xl flex flex-col justify-between p-6 shrink-0 relative overflow-hidden text-white min-h-[300px] shadow-lg border border-white/5">
+            <div
+              onClick={() => {
+                setSelectedGuide(guide);
+                setActiveChapterIdx(0);
+              }}
+              className="w-full md:w-64 bg-[#1E2023] rounded-xl shrink-0 relative overflow-hidden text-white min-h-[320px] shadow-lg border border-white/5 cursor-pointer group hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
+            >
               {guide.id === "guide-1" ? (
                 <img 
                   src={speakeaseGuideCover} 
                   alt={guide.title} 
-                  className="w-full h-full object-contain block absolute inset-0"
+                  className="w-full h-full object-cover block absolute inset-0 transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                 />
               ) : guide.id === "guide-2" ? (
                 <img 
                   src={globalAccentGuideCover} 
                   alt={guide.title} 
-                  className="w-full h-full object-contain block absolute inset-0"
+                  className="w-full h-full object-cover block absolute inset-0 transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                 />
               ) : (
@@ -65,7 +71,7 @@ export default function ProductInside({ unlocked, onOpenCheckout }: ProductInsid
                   <div className="absolute top-0 right-0 p-8 opacity-5">
                     <BookOpen size={160} />
                   </div>
-                  <div className="flex items-center justify-between z-10">
+                  <div className="flex items-center justify-between z-10 p-6 w-full">
                     <span className="font-mono text-[9px] font-bold text-[#8A9BAE] uppercase tracking-widest bg-white/5 px-2.5 py-1 rounded-full border border-white/5">
                       {guide.badge}
                     </span>
@@ -77,17 +83,80 @@ export default function ProductInside({ unlocked, onOpenCheckout }: ProductInsid
                     )}
                   </div>
                   
-                  <div className="z-10 mt-8">
+                  <div className="z-10 mt-8 px-6">
                     <p className="font-mono text-[10px] text-[#8A9BAE] uppercase tracking-wider">SPEAKEASE METHOD</p>
                     <h4 className="font-serif text-2xl font-bold leading-tight mt-1">{guide.title}</h4>
                   </div>
 
-                  <div className="pt-8 border-t border-white/5 mt-auto flex items-center justify-between z-10">
+                  <div className="pt-8 border-t border-white/5 mt-auto flex items-center justify-between z-10 px-6 pb-6 w-full">
                     <span className="font-sans text-[10px] text-[#8A9BAE] uppercase tracking-widest font-semibold">
                       {unlocked ? "Click to Read" : "Click to Preview"}
                     </span>
                     <span className="font-mono text-[9px] text-[#8A9BAE]">© QORR LABS</span>
                   </div>
+                </>
+              )}
+
+              {/* Realistic 3D Book Spine & Crease Shadows */}
+              <div className="absolute inset-y-0 left-0 w-4 bg-gradient-to-r from-black/50 via-black/15 to-transparent z-10 pointer-events-none" />
+              <div className="absolute inset-y-0 left-4 w-[1px] bg-white/5 z-10 pointer-events-none" />
+              <div className="absolute inset-y-0 left-5 w-[1px] bg-black/25 z-10 pointer-events-none" />
+              
+              {/* Luxury Reflection Diagonal Shine */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent z-10 pointer-events-none" />
+
+              {/* Translucent overlay layer on hover */}
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300 z-10" />
+
+              {/* Floating indicators for interactive covers */}
+              {(guide.id === "guide-1" || guide.id === "guide-2") && (
+                <>
+                  {/* Top Badges overlay */}
+                  <div className="absolute top-4 inset-x-4 flex items-center justify-between z-20 pointer-events-none">
+                    <span className="font-mono text-[9px] font-bold text-white uppercase tracking-widest bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
+                      {guide.badge}
+                    </span>
+                    
+                    {unlocked ? (
+                      <div className="p-1.5 bg-emerald-500/90 backdrop-blur-sm text-white rounded-full border border-emerald-400/20 shadow">
+                        <Unlock size={11} strokeWidth={2.5} />
+                      </div>
+                    ) : (
+                      <div className="p-1.5 bg-black/75 backdrop-blur-sm text-neutral-200 rounded-full border border-white/10 shadow">
+                        <Lock size={11} strokeWidth={2.5} />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Bottom Interactive Trigger Overlay */}
+                  <div className="absolute bottom-4 inset-x-4 flex flex-col gap-1 z-20">
+                    <div className="bg-black/80 backdrop-blur-md p-3 rounded-xl border border-white/10 transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-between shadow-lg">
+                      <span className="font-sans text-[10px] text-neutral-100 uppercase tracking-widest font-semibold flex items-center gap-1.5">
+                        {unlocked ? (
+                          <>
+                            <Unlock size={10} className="text-emerald-400" />
+                            Read Online
+                          </>
+                        ) : (
+                          <>
+                            <Lock size={10} className="text-neutral-400" />
+                            Preview Outline
+                          </>
+                        )}
+                      </span>
+                      <span className="font-sans text-[10px] text-neutral-300 font-bold">→</span>
+                    </div>
+                  </div>
+
+                  {/* Normal-state lock indicator to hint exclusivity */}
+                  {!unlocked && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/5 z-10 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                      <div className="p-3 bg-black/75 backdrop-blur-md rounded-xl border border-white/10 text-center flex flex-col items-center gap-1">
+                        <Lock size={15} className="text-neutral-300 animate-pulse" />
+                        <span className="font-mono text-[8px] text-neutral-400 tracking-wider uppercase font-bold">PREVIEW</span>
+                      </div>
+                    </div>
+                  )}
                 </>
               )}
             </div>
@@ -140,9 +209,18 @@ export default function ProductInside({ unlocked, onOpenCheckout }: ProductInsid
                   {unlocked ? "Open & Read Digital PDF" : "Preview Chapter Outline"}
                 </button>
                 
-                {!unlocked && (
+                {unlocked ? (
+                  <a
+                    href={`/api/download-pdf?guideId=${guide.id}`}
+                    download
+                    className="font-sans text-xs font-semibold px-5 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full transition-all flex items-center gap-1.5 no-underline shadow-md"
+                  >
+                    <Download size={13} />
+                    Download PDF Version
+                  </a>
+                ) : (
                   <span className="font-sans text-xs text-[#8A9BAE] flex items-center gap-1">
-                    <Lock size={12} /> Buy ₹399 bundle to unlock full text
+                    <Lock size={12} /> Buy bundle to unlock downloadable PDF
                   </span>
                 )}
               </div>

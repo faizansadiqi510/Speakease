@@ -5,9 +5,10 @@ import { Shield, Sparkles, Mail, Phone, MapPin, X } from "lucide-react";
 interface FooterProps {
   onOpenCheckout: () => void;
   onScrollToSection: (sectionId: string) => void;
+  onOpenCreatorPortal: () => void;
 }
 
-export default function Footer({ onOpenCheckout, onScrollToSection }: FooterProps) {
+export default function Footer({ onOpenCheckout, onScrollToSection, onOpenCreatorPortal }: FooterProps) {
   const [modalType, setModalType] = useState<"privacy" | "refund" | "terms" | "contact" | null>(null);
 
   const policyContent = {
@@ -141,8 +142,14 @@ At SpeakEase, we operate with the following core commitments:
 
         </div>
 
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-[#8A9BAE] text-[11px] font-medium uppercase tracking-wider">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-[#8A9BAE] text-[11px] font-medium uppercase tracking-wider gap-4">
           <p>© 2026 SpeakEase • Qorr Labs. All rights reserved.</p>
+          <button
+            onClick={onOpenCreatorPortal}
+            className="flex items-center gap-1.5 bg-neutral-200/60 hover:bg-neutral-300/80 text-neutral-600 px-3 py-1.5 rounded-lg border-none cursor-pointer text-[10px] font-bold tracking-widest uppercase transition-colors"
+          >
+            🔒 Creator Portal
+          </button>
           <p className="mt-2 sm:mt-0 font-mono">CRAFTED FOR INDIA'S FREELANCE COMMUNITY</p>
         </div>
       </footer>
