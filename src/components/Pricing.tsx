@@ -128,12 +128,14 @@ export default function Pricing({ onUnlockGuides, unlocked }: PricingProps) {
               You own this bundle! Chapters are fully unlocked.
             </div>
           ) : (
-            <button
-              onClick={() => setIsCheckingOut(true)}
-              className="w-full font-sans text-sm font-semibold px-8 py-4 bg-white hover:bg-neutral-200 text-[#0D0D0D] rounded-full active:scale-98 transition-all duration-200 shadow-xl flex items-center justify-center gap-2 border-none cursor-pointer mb-4"
+            <a
+              href="https://superprofile.bio/vp/speakease-—-the-complete-clear-speech-bundle"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full font-sans text-sm font-semibold px-8 py-4 bg-white hover:bg-neutral-200 text-[#0D0D0D] rounded-full active:scale-[0.98] transition-all duration-200 shadow-xl flex items-center justify-center gap-2 border-none cursor-pointer mb-4 no-underline inline-flex justify-center"
             >
               Get SpeakEase — ₹{price}
-            </button>
+            </a>
           )}
 
           <p className="font-sans text-[10px] text-[#8A9BAE] uppercase tracking-wider flex items-center justify-center gap-1.5">
