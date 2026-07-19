@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Mic, ArrowRight, Play, CheckCircle } from "lucide-react";
-import speakeaseGuideCover from "../assets/images/speakease_guide_cover_original.png";
+import speakeaseGuideCover from "../assets/images/speakease_main_guide_cover.png";
 
 interface HeroProps {
   onOpenCheckout: () => void;

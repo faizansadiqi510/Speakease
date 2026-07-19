@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { GUIDES } from "../data";
 import { GuideBook } from "../types";
 import { BookOpen, Check, Lock, Unlock, PlayCircle, X, Download } from "lucide-react";
-import speakeaseGuideCover from "../assets/images/speakease_guide_cover_original.png";
+import speakeaseGuideCover from "../assets/images/speakease_main_guide_cover.png";
 import globalAccentGuideCover from "../assets/images/global_accent_guide_cover.png";
 
 interface ProductInsideProps {
