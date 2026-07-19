@@ -58,6 +58,9 @@ export default function ProductInside({ unlocked, onOpenCheckout }: ProductInsid
                   alt={guide.title} 
                   className="w-full h-full object-cover block absolute inset-0 transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = "https://i.postimg.cc/g2cnCpqv/Chat-GPT-Image-Jul-4-2026-12-23-39-AM.png";
+                  }}
                 />
               ) : guide.id === "guide-2" ? (
                 <img 
@@ -65,6 +68,9 @@ export default function ProductInside({ unlocked, onOpenCheckout }: ProductInsid
                   alt={guide.title} 
                   className="w-full h-full object-cover block absolute inset-0 transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = "https://i.postimg.cc/Pqgf5nZy/Chat-GPT-Image-Jul-4-2026-12-37-36-AM.png";
+                  }}
                 />
               ) : (
                 <>

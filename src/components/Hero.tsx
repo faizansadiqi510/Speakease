@@ -155,6 +155,9 @@ export default function Hero({ onOpenCheckout, onScrollToSection }: HeroProps) {
               alt="The Clear Speech Guide Cover" 
               className="w-full h-auto object-contain block"
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                e.currentTarget.src = "https://i.postimg.cc/g2cnCpqv/Chat-GPT-Image-Jul-4-2026-12-23-39-AM.png";
+              }}
             />
             {/* Realistic 3D Book Spine & Crease Shadows */}
             <div className="absolute inset-y-0 left-0 w-5 bg-gradient-to-r from-black/50 via-black/15 to-transparent z-10 pointer-events-none" />
