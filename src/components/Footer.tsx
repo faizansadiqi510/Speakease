@@ -107,8 +107,13 @@ At SpeakEase, we operate with the following core commitments:
             onClick={() => onScrollToSection("hero")}
             className="flex items-center gap-2 cursor-pointer"
           >
-            <span className="font-sans font-bold text-lg tracking-tight text-[#0D0D0D] flex items-center gap-1">
-              <span className="text-[#8A9BAE]">●</span> SpeakEase
+            <span className="font-sans font-bold text-lg tracking-tight text-[#0D0D0D] flex items-center gap-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-5 h-5 flex-shrink-0">
+                <circle cx="50" cy="50" r="45" stroke="#38424d" stroke-width="8" fill="none" />
+                <circle cx="50" cy="50" r="30" stroke="#4c5866" stroke-width="8" fill="none" />
+                <circle cx="50" cy="50" r="14" fill="#8fa3b5" />
+              </svg>
+              SpeakEase
             </span>
           </div>
 

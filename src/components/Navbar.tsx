@@ -43,8 +43,13 @@ export default function Navbar({ onScrollToSection, onOpenCheckout }: NavbarProp
             onClick={() => onScrollToSection("hero")} 
             className="flex items-center gap-2 cursor-pointer select-none"
           >
-            <span className="font-sans font-bold text-base sm:text-lg tracking-tight text-white flex items-center gap-1">
-              <span className="text-[#8A9BAE]">●</span> SpeakEase
+            <span className="font-sans font-bold text-base sm:text-lg tracking-tight text-white flex items-center gap-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-5 h-5 flex-shrink-0">
+                <circle cx="50" cy="50" r="45" stroke="#38424d" stroke-width="8" fill="none" />
+                <circle cx="50" cy="50" r="30" stroke="#4c5866" stroke-width="8" fill="none" />
+                <circle cx="50" cy="50" r="14" fill="#8fa3b5" />
+              </svg>
+              SpeakEase
             </span>
           </div>
 
