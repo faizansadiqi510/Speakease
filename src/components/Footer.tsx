@@ -5,10 +5,9 @@ import { Shield, Sparkles, Mail, Phone, MapPin, X } from "lucide-react";
 interface FooterProps {
   onOpenCheckout: () => void;
   onScrollToSection: (sectionId: string) => void;
-  onOpenCreatorPortal: () => void;
 }
 
-export default function Footer({ onOpenCheckout, onScrollToSection, onOpenCreatorPortal }: FooterProps) {
+export default function Footer({ onOpenCheckout, onScrollToSection }: FooterProps) {
   const [modalType, setModalType] = useState<"privacy" | "refund" | "terms" | "contact" | null>(null);
 
   const policyContent = {
@@ -22,11 +21,12 @@ At SpeakEase, we operate with the following core commitments:
 - **Analytics**: We use standard, anonymous, privacy-compliant cookies to optimize page loading performance.`
     },
     refund: {
-      title: "Refund Policy",
-      text: `We stand by the absolute quality of the SpeakEase Method.
+      title: "Digital Product Delivery & Refund Policy",
+      text: `SpeakEase is a premium digital product consisting of downloadable guides and interactive tools.
 
-- **14-Day Money Back Guarantee**: If you practice the daily metronome drills and complete the consonant drills in Guide 01 and Guide 02 for 10 minutes a day, and feel your verbal clarity hasn't improved, you are entitled to a full, immediate refund.
-- **Hassle-Free Processing**: Simply email us at refunds@speakease.co within 14 days of purchase with your email address. We will return your ₹399 payment instantly, no questions asked.`
+- **Instant Delivery**: Upon successful purchase, you receive immediate, unrestricted digital access to download the PDF guides and unlock all training tools.
+- **No Refunds**: Because this is a downloadable digital product with instant delivery, all purchases are final and non-refundable. There is no way to "return" a digital file once it has been accessed or downloaded.
+- **Support**: If you encounter any technical difficulties downloading your files or accessing your materials, please contact us immediately at agencygwumedia@gmail.com and we will resolve it right away.`
     },
     terms: {
       title: "Terms of Service",
@@ -39,7 +39,7 @@ At SpeakEase, we operate with the following core commitments:
       title: "Contact SpeakEase Team",
       text: `We'd love to hear from you! Our team of speech specialists and support staff is available.
 
-- **Email Support**: support@speakease.co (average response time is less than 3 hours)
+- **Email Support**: agencygwumedia@gmail.com (average response time is less than 3 hours)
 - **Technical Desk**: Qorr Labs, Bangalore, India.
 - **WhatsApp Support Desk**: +91 98765 43210 (Mon-Sat, 9 AM - 6 PM IST)`
     }
@@ -92,7 +92,7 @@ At SpeakEase, we operate with the following core commitments:
               Get SpeakEase — ₹399
             </button>
             <span className="font-sans text-[11px] text-[#8A9BAE] uppercase tracking-wider flex items-center gap-1 justify-center">
-              <Shield size={12} /> Instant Delivery • 14-Day Money Back Guarantee
+              <Shield size={12} /> Instant Delivery • Digital Product (Non-Refundable)
             </span>
           </motion.div>
         </div>
@@ -129,7 +129,7 @@ At SpeakEase, we operate with the following core commitments:
               onClick={() => setModalType("refund")}
               className="bg-transparent border-none text-xs font-semibold uppercase tracking-wider text-[#8A9BAE] hover:text-[#0D0D0D] transition-colors cursor-pointer"
             >
-              Refund
+              Refund Policy
             </button>
             <button
               onClick={() => setModalType("terms")}
@@ -149,12 +149,6 @@ At SpeakEase, we operate with the following core commitments:
 
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-[#8A9BAE] text-[11px] font-medium uppercase tracking-wider gap-4">
           <p>© 2026 SpeakEase • Qorr Labs. All rights reserved.</p>
-          <button
-            onClick={onOpenCreatorPortal}
-            className="flex items-center gap-1.5 bg-neutral-200/60 hover:bg-neutral-300/80 text-neutral-600 px-3 py-1.5 rounded-lg border-none cursor-pointer text-[10px] font-bold tracking-widest uppercase transition-colors"
-          >
-            🔒 Creator Portal
-          </button>
           <p className="mt-2 sm:mt-0 font-mono">CRAFTED FOR INDIA'S FREELANCE COMMUNITY</p>
         </div>
       </footer>
@@ -188,7 +182,7 @@ At SpeakEase, we operate with the following core commitments:
                 <div className="mt-6 pt-4 border-t border-[#C8CDD4]/10 space-y-2 text-xs text-[#0D0D0D]">
                   <div className="flex items-center gap-2">
                     <Mail size={12} className="text-[#8A9BAE]" />
-                    <span className="font-semibold">support@speakease.co</span>
+                    <span className="font-semibold">agencygwumedia@gmail.com</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Phone size={12} className="text-[#8A9BAE]" />

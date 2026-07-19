@@ -11,14 +11,12 @@ import WhoItsFor from "./components/WhoItsFor";
 import Pricing from "./components/Pricing";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
-import CreatorPortal from "./components/CreatorPortal";
 import { Unlock, CheckCircle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function App() {
   const [unlocked, setUnlocked] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
-  const [showCreatorPortal, setShowCreatorPortal] = useState(false);
 
   const handleScrollToSection = (sectionId: string) => {
     const target = document.getElementById(sectionId);
@@ -97,18 +95,7 @@ export default function App() {
       <Footer 
         onOpenCheckout={() => handleScrollToSection("pricing")}
         onScrollToSection={handleScrollToSection}
-        onOpenCreatorPortal={() => setShowCreatorPortal(true)}
       />
-
-      {/* Creator Dashboard overlay */}
-      <AnimatePresence>
-        {showCreatorPortal && (
-          <CreatorPortal 
-            isOpen={showCreatorPortal} 
-            onClose={() => setShowCreatorPortal(false)} 
-          />
-        )}
-      </AnimatePresence>
 
       {/* Persistent floating notification on unlocked guides */}
       <AnimatePresence>

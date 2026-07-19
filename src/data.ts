@@ -221,7 +221,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     id: "faq-5",
-    question: "What if it doesn't work for me?",
-    answer: "We offer an absolute 14-day money-back guarantee. If you complete the simple daily drills and don't feel your pitch clarity has improved, just click 'Request Refund' inside the footer, enter your purchase details, and your ₹399 payment will be returned immediately. No questions asked."
+    question: "Is there a refund policy?",
+    answer: "SpeakEase is a digital guide bundle providing immediate, full download access to all proprietary materials upon purchase. Because of the instant download nature of this digital product, all sales are final and we do not offer refunds. We encourage you to check the chapter previews in the 'Product Inside' section to see exactly what you will receive before purchasing."
   }
 ];

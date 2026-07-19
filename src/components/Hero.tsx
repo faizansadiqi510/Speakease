@@ -135,8 +135,8 @@ export default function Hero({ onOpenCheckout, onScrollToSection }: HeroProps) {
               <p className="font-sans text-[10px] uppercase tracking-widest text-[#8A9BAE] mt-1">One-time Price</p>
             </div>
             <div>
-              <span className="font-serif text-3xl font-semibold text-white">100%</span>
-              <p className="font-sans text-[10px] uppercase tracking-widest text-[#8A9BAE] mt-1">Risk-Free Guarantee</p>
+              <span className="font-serif text-3xl font-semibold text-white">Instant</span>
+              <p className="font-sans text-[10px] uppercase tracking-widest text-[#8A9BAE] mt-1">Digital Access</p>
             </div>
           </motion.div>
 

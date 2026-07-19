@@ -67,7 +67,7 @@ export default function Pricing({ onUnlockGuides, unlocked }: PricingProps) {
     "Pre-call daily vocal workout warmups",
     "Unlimited access to AI Voice Evaluation Tool",
     "Lifetime digital download access",
-    "No-questions-asked 14-day refund policy"
+    "Digital product with instant access (non-refundable)"
   ];
 
   return (
